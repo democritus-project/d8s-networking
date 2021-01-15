@@ -9,12 +9,11 @@ from democritus_networking import (
     delete,
     headers_update,
     urllib3_backoff_factor_executions,
-    _update_header_for_json,
     headers_update,
-    req_redirects,
     url_hash,
     requests_basic_auth,
 )
+from democritus_networking.networking import _update_header_for_json
 
 
 def test_requests_basic_auth_1():
@@ -28,13 +27,6 @@ def test_url_hash_1():
 
 
 @pytest.mark.network
-def test_req_redirects_1():
-    result = req_redirects('https://hightower.space/')
-    assert len(result) == 1
-    assert result[0].status_code == 200
-
-
-@pytest.mark.network
 def test_head():
     response = head('https://jsonplaceholder.typicode.com/posts/1')
     assert response.status_code == 200
@@ -45,36 +37,36 @@ def test_head():
 
 
 @pytest.mark.network
-def test_post():
+def test_post_docs_1():
     url = 'https://jsonplaceholder.typicode.com/posts'
     data = {'title': 'foo', 'body': 'bar', 'userId': 1}
-    response = post(url, data=data)
+    response = post(url, data=data, process_response=True)
     assert response == {'title': 'foo', 'body': 'bar', 'userId': 1, 'id': 101}
 
-    response = post(url, data=data, process_response=False)
+    response = post(url, data=data)
     assert response.status_code == 201
 
 
 @pytest.mark.network
-def test_put():
+def test_put_docs_1():
     url = 'https://jsonplaceholder.typicode.com/posts/1'
     data = {'id': 1, 'title': 'foo', 'body': 'bar', 'userId': 1}
-    response = put(url, data=data)
+    response = put(url, data=data, process_response=True)
     assert response == {'id': 1, 'title': 'foo', 'body': 'bar', 'userId': 1}
 
-    response = put(url, data=data, process_response=False)
+    response = put(url, data=data)
     assert response.status_code == 200
 
 
 @pytest.mark.network
-def test_get():
-    response = get('http://hightower.space/projects')
+def test_get_docs_1():
+    response = get('http://hightower.space/projects', process_response=True)
     assert 'Floyd' in response
 
-    response = get('http://hightower.space/projects', process_response=False)
+    response = get('http://hightower.space/projects')
     assert response.status_code == 200
 
-    response = get('http://hightower.space/projects', handle_response_as_bytes=True)
+    response = get('http://hightower.space/projects', process_response_as_bytes=True)
     assert isinstance(response, bytes)
     assert response.startswith(b'<!DOCTYPE html>')
 
@@ -86,37 +78,36 @@ def test_get():
         headers={
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36'
         },
+        process_response=True,
     )
     assert response.startswith('<!doctype html>')
 
 
 @pytest.mark.network
 def test_get_odds_and_ends():
-    response = get('http://example.com', headers={'Foo': 'Bar'})
+    response = get('http://example.com', headers={'Foo': 'Bar'}, process_response=True)
     assert response.startswith('<!doctype html>')
 
 
 @pytest.mark.network
 def test_delete():
-    response = delete('https://jsonplaceholder.typicode.com/posts/1')
+    response = delete('https://jsonplaceholder.typicode.com/posts/1', process_response=True)
     assert response == {}
 
-    response = delete('https://jsonplaceholder.typicode.com/posts/1', process_response=False)
+    response = delete('https://jsonplaceholder.typicode.com/posts/1')
     assert response.status_code == 200
 
 
 def test_urllib3_backoff_factor_executions_1():
-    results = urllib3_backoff_factor_executions(0.1, 10)
+    results = tuple(urllib3_backoff_factor_executions(0.1, 10))
     assert len(results) == 10
-    print('results {}'.format(results))
     assert results[0] == 0.0
     assert results[1] == 0.2
     assert results[2] == 0.4
     assert results[9] == 51.2
 
-    results = urllib3_backoff_factor_executions(0.5, 3)
+    results = tuple(urllib3_backoff_factor_executions(0.5, 3))
     assert len(results) == 3
-    print('results {}'.format(results))
     assert results[0] == 0.0
     assert results[1] == 1.0
     assert results[2] == 2.0
