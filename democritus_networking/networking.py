@@ -5,8 +5,6 @@ from typing import Any, Dict
 
 import requests
 
-# TODO: I'd like to change `convert_json` to something like `detect_and_convert_response_data`
-
 
 def requests_basic_auth(user, password):
     """Return an instance of request's basic auth."""
@@ -36,9 +34,6 @@ def _process_response(
         message = f'{response.status_code} error from {response.request.method} {url}: {response.text}'
         print(message)
         return response
-
-
-# TODO: write functions to get and provide a user-agent (and ideally to choose a random user-agent from a list of common ones)
 
 
 def get(
@@ -86,6 +81,14 @@ def head(url, *, process_response: bool = False, **kwargs):
         return response
 
 
+def _data_is_json(data: Any) -> bool:
+    """."""
+    JSON_DATATYPES = (dict, list)
+    if isinstance(data, JSON_DATATYPES):
+        return True
+    return False
+
+
 def post(
     url,
     *,
@@ -98,8 +101,7 @@ def post(
     has_data = request_kwargs.get('data')
     if update_headers_for_datatype and has_data:
         data = request_kwargs['data']
-        # TODO: move this testing elsewhere to detect if the given data is json
-        if isinstance(data, (dict, list)):
+        if _data_is_json(data):
             request_kwargs['data'] = json.dumps(data)
             request_kwargs = _update_header_for_json(**request_kwargs)
 
@@ -149,8 +151,9 @@ def put(
     """Make a PUT request to the given URL with the given data."""
     has_data = request_kwargs.get('data')
     if update_headers_for_datatype and has_data:
-        if isinstance(request_kwargs['data'], dict) or isinstance(request_kwargs['data'], list):
-            request_kwargs['data'] = json.dumps(request_kwargs['data'])
+        data = request_kwargs['data']
+        if _data_is_json(data):
+            request_kwargs['data'] = json.dumps(data)
             request_kwargs = _update_header_for_json(**request_kwargs)
 
     response = requests.put(url, **request_kwargs)
