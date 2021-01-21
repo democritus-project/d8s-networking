@@ -2,3 +2,4 @@ democritus-hashes @ git+https://github.com/democritus-project/democritus-hashes.
 democritus-json @ git+https://github.com/democritus-project/democritus-json.git#egg=democritus-json
 democritus-user-agents @ git+https://github.com/democritus-project/democritus-user-agents.git#egg=democritus-user-agents
 requests
+importlib-metadata; python_version < '3.8'
