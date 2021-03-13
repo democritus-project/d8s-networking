@@ -1,7 +1,7 @@
 import pytest
 import requests
 
-from democritus_networking import (
+from d8s_networking import (
     get,
     head,
     post,
@@ -13,7 +13,7 @@ from democritus_networking import (
     url_hash,
     requests_basic_auth,
 )
-from democritus_networking.networking import _update_header_for_json
+from d8s_networking.networking import _update_header_for_json
 
 
 def test_requests_basic_auth_1():

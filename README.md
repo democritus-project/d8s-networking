@@ -1,8 +1,8 @@
 # Democritus Networking
 
-[![PyPI](https://img.shields.io/pypi/v/democritus-networking.svg)](https://pypi.python.org/pypi/democritus-networking)
-[![Build Status](https://travis-ci.com/democritus-project/democritus-networking.svg?branch=master)](https://travis-ci.com/democritus-project/democritus-networking)
-[![codecov](https://codecov.io/gh/democritus-project/democritus-networking/branch/master/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/democritus-project/democritus-networking)
+[![PyPI](https://img.shields.io/pypi/v/d8s-networking.svg)](https://pypi.python.org/pypi/d8s-networking)
+[![Build Status](https://travis-ci.com/democritus-project/d8s-networking.svg?branch=main)](https://travis-ci.com/democritus-project/d8s-networking)
+[![codecov](https://codecov.io/gh/democritus-project/d8s-networking/branch/main/graph/badge.svg?token=V0WOIXRGMM)](https://codecov.io/gh/democritus-project/d8s-networking)
 
 Democritus functions<sup>[1]</sup> for working with network requests.
 
