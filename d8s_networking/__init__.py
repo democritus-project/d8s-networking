@@ -4,9 +4,9 @@ except ImportError:
     from importlib_metadata import PackageNotFoundError, version  #type: ignore
 
 try:
-    __version__ = version('democritus_networking')
+    __version__ = version('d8s_networking')
 except PackageNotFoundError:
-    message = 'Unable to find a version number for "democritus_networking". This likely means the library was not installed properly. Please re-install it and, if the problem persists, raise an issue here: https://github.com/democritus-project/democritus-networking/issues.'
+    message = 'Unable to find a version number for "d8s_networking". This likely means the library was not installed properly. Please re-install it and, if the problem persists, raise an issue here: https://github.com/democritus-project/democritus-networking/issues.'
     print(message)
 
 __author__ = '''Floyd Hightower'''

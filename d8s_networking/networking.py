@@ -20,7 +20,7 @@ def _process_response(
     process_response_as_bytes: bool = False,
 ):
     """Handle the responses from requests."""
-    from democritus_json import json_read
+    from d8s_json import json_read
 
     if response.ok:
         if process_response_as_bytes:
@@ -45,7 +45,7 @@ def get(
     **request_kwargs,
 ):
     """Make a GET request to the given URL."""
-    from democritus_user_agents import user_agent_common
+    from d8s_user_agents import user_agent_common
 
     if use_common_user_agent:
         user_agent = user_agent_common()
@@ -192,7 +192,7 @@ def delete(
 
 def url_hash(url, hash_type='sha256'):
     """Return the hash of the url."""
-    from democritus_hashes.hashes import _string_hash
+    from d8s_hashes.hashes import _string_hash
 
     return _string_hash(get(url, process_response=True), hash_type)
 
