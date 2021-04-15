@@ -14,9 +14,71 @@ Democritus functions<sup>[1]</sup> for working with network requests.
 
 We use `d8s` as an abbreviation for `democritus` (you can read more about this [here](https://github.com/democritus-project/roadmap#what-is-d8s)).
 
-## Usage
+## Functions
 
-Coming soon...
+  - ```python
+    def requests_basic_auth(user, password):
+        """Return an instance of request's basic auth."""
+    ```
+  - ```python
+    def get(
+        url,
+        *,
+        use_common_user_agent: bool = True,
+        process_response: bool = False,
+        process_response_as_bytes: bool = False,
+        **request_kwargs,
+    ):
+        """Make a GET request to the given URL."""
+    ```
+  - ```python
+    def head(url, *, process_response: bool = False, **kwargs):
+        """Make a head request."""
+    ```
+  - ```python
+    def post(
+        url,
+        *,
+        update_headers_for_datatype: bool = True,
+        process_response: bool = False,
+        process_response_as_bytes: bool = False,
+        **request_kwargs,
+    ):
+        """Make a POST request to the given URL with the given data."""
+    ```
+  - ```python
+    def headers_update(headers: Dict[str, str], new_header_key: str, new_header_value: Any, *, overwrite: bool = True):
+        """."""
+    ```
+  - ```python
+    def put(
+        url,
+        *,
+        update_headers_for_datatype: bool = True,
+        process_response: bool = False,
+        process_response_as_bytes: bool = False,
+        **request_kwargs,
+    ):
+        """Make a PUT request to the given URL with the given data."""
+    ```
+  - ```python
+    def delete(
+        url,
+        *,
+        process_response: bool = False,
+        process_response_as_bytes: bool = False,
+        **request_kwargs,
+    ):
+        """Make a DELETE request to the given URL with the given data."""
+    ```
+  - ```python
+    def url_hash(url, hash_type='sha256'):
+        """Return the hash of the url."""
+    ```
+  - ```python
+    def urllib3_backoff_factor_executions(backoff_factor: float, number_of_requests: int):
+        """Return the times (in seconds) of the first n requests with the given backoff_factor. See https://urllib3.readthedocs.io/en/latest/reference/index.html#urllib3.Retry under the "backoff_factor" argument."""
+    ```
 
 ## Development
 
