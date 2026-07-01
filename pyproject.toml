@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "d8s_networking"
-version = "0.4.2"
+version = "0.5.0"
 description = "Democritus functions for working with network requests."
 readme = "README.md"
 requires-python = ">=3.10"
