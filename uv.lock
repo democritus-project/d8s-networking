@@ -382,15 +382,15 @@ wheels = [
 
 [[package]]
 name = "d8s-json"
-version = "0.3.0"
+version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "d8s-file-system" },
     { name = "d8s-strings" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/95/5d0ab1d228419d792cc52be5d66b6add88ed6e09d4c34c51b4dbe9a283ec/d8s_json-0.3.0.tar.gz", hash = "sha256:d27ef5efdc3e081894d6c83560882b5e1d1e1eb932766287bf0cd98e273178ea", size = 26543, upload-time = "2021-05-07T10:48:55.437Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/21/04/075726df1f35b57340389d6dfebc075878f595d176632bb6bed493f22f6c/d8s_json-0.4.0.tar.gz", hash = "sha256:594d5fb83e3b3b2bd5a3d8d9a2b1d003974537167ef5aace34e7c2542dda32e2", size = 112123, upload-time = "2026-07-01T12:07:00.389Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c0/96/5be3e35f65c988261b9592c221842362277415ed8974e4e5b4fbced4a0ea/d8s_json-0.3.0-py2.py3-none-any.whl", hash = "sha256:aa31f14a148f564db2cac344c527de2dc57fe0f49a1e1b8edd9a50fcef9fa8b5", size = 22322, upload-time = "2021-05-07T10:48:53.41Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/7d/895921242d6644ff09c465adbf8b4ba0f5f22ac36698723d623fa8177ac3/d8s_json-0.4.0-py3-none-any.whl", hash = "sha256:8b701ebd767f8e3b8688693c891023b2f1efe262fa4697e14e787317281c1659", size = 19745, upload-time = "2026-07-01T12:06:59.301Z" },
 ]
 
 [[package]]
